@@ -1,0 +1,58 @@
+{
+    "sharegpt4v_instruct_gpt4-vision_cap100k": {
+	"root": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739/data/",
+	"annotation": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739/opensource/sharegpt4v_instruct_gpt4-vision_cap100k.jsonl",
+	"data_augment": false,
+	"repeat_time": 1,
+	"length": 102025
+	},
+  "llava_instruct_150k_zh": {
+    "root": "/home/louw/eye_llava_pretrain/images/",
+    "annotation": "/home/louw/VLM/preprocess/datasets/11_28_v5_balance/eye_llava_instruct_clinical_train_v5_fulldataset.jsonl",
+    "data_augment": true,
+    "repeat_time": 1,
+    "length": 60000
+  },
+  "dvqa_train_200k": {
+    "root": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739/data/dvqa/",
+    "annotation": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739/opensource/dvqa_train_200k.jsonl",
+    "data_augment": false,
+    "repeat_time": 1,
+    "length": 200000
+  },
+  "chartqa_train_18k": {
+    "root": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739/data/chartqa/",
+    "annotation": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739/opensource/chartqa_train_18k.jsonl",
+    "data_augment": false,
+    "repeat_time": 1,
+    "length": 18317
+  },
+  "ai2d_train_12k": {
+    "root": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739//data/ai2d/",
+    "annotation": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739/opensource/ai2d_train_12k.jsonl",
+    "data_augment": false,
+    "repeat_time": 1,
+    "length": 12413
+  },
+  "docvqa_train_10k": {
+    "root": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739//data/docvqa/",
+    "annotation": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739/opensource/docvqa_train_10k.jsonl",
+    "data_augment": false,
+    "repeat_time": 1,
+    "length": 10211
+  },
+  "geoqa+": {
+    "root": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739//data/geoqa+/",
+    "annotation": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739/opensource/geoqa+.jsonl",
+    "data_augment": false,
+    "repeat_time": 1,
+    "length": 72318
+  },
+  "synthdog_en": {
+    "root": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739//data/synthdog-en/",
+    "annotation": "/home/louw/InternVL/pretraining_data/datasets--OpenGVLab--InternVL-Chat-V1-2-SFT-Data/snapshots/589b010050d3b530012466ecd6dc9b61a772b739/opensource/synthdog_en.jsonl",
+    "data_augment": false,
+    "repeat_time": 1,
+    "length": 29765
+  }
+}

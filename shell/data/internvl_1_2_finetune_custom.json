@@ -1,0 +1,9 @@
+{
+  "llava_instruct_150k_zh": {
+    "root": "/home/louw/eye_llava_pretrain/images/",
+    "annotation": "/home/louw/VLM/preprocess/eye_llava_instruct_clinical_v4.jsonl",
+    "data_augment": false,
+    "repeat_time": 1,
+    "length": 60000
+  }
+}
