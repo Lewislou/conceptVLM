@@ -37,12 +37,7 @@ bash evaluate.sh path/to/checkpoint
 If you use this code or methodology in your research, please cite our paper:
 
 ```bibtex
-@article{conceptvlm2024,
-  title={ConceptVLM: Enhancing Medical VLMs with Key Concept-Aware Supervision},
-  author={Your Name et al.},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
-  year={2024}
-}
+
 ```
 
 ---
