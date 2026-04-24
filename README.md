@@ -16,20 +16,23 @@ Install project dependencies, please refer to [InternVL](https://github.com/Open
 pip install -e .
 ```
 ## 🔧 Usage
+### 1. Add your datases and dictionary json file
+Add your data path in shell\data\internvl_1_2_finetune_custom.json.
+Add your dictionary json file and tokenizer path in internvl\model\internvl_chat\modeling_internvl_chat.py
 
-### 1. Train the Model
+
+### 2. Train the Model
 
 Run training using provided shell scripts:
 
 ```bash
-# Example: Stage 3 training with 34B model
-bash shell/train_stage3.sh zero_stage3_config_34b.json
+bash shell\internvl2.0\2nd_finetune\internvl2_8b_internlm2_7b_dynamic_res_2nd_finetune_lora.sh
 ```
 
-### 2. Evaluate the Model
+### 3. Evaluate the Model
 
 ```bash
-bash evaluate.sh path/to/checkpoint
+bash evaluate.sh path/to/checkpoint vqa-textvqa-val --dynamic 
 ```
 
 ## Citation
