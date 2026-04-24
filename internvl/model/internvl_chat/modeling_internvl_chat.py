@@ -135,10 +135,10 @@ class InternVLChatModel(PreTrainedModel):
         self.downsample_ratio = config.downsample_ratio
         self.ps_version = config.ps_version
         self.llm_arch_name = config.llm_config.architectures[0]
-        self.tokenizer = AutoTokenizer.from_pretrained('/home/louw/InternVL/internvl_chat/pretrained/InternVL2-8B',trust_remote_code=True) 
-        with open('/home/louw/VLM/public_datasets/slake_pmc_path_eye_close_mapping.json','r', encoding='utf-8') as file:
+        self.tokenizer = AutoTokenizer.from_pretrained('',trust_remote_code=True)  ##set tokenizer path 
+        with open('','r', encoding='utf-8') as file:  ##set close-ended dictionary path 
             self.close_match_dict = json.load(file)
-        with open('/home/louw/VLM/public_datasets/slake_pmc_path_eye_open_mapping.json','r', encoding='utf-8') as file:
+        with open('','r', encoding='utf-8') as file:  ##set open-ended dictionary path 
             self.open_match_dict = json.load(file)
         logger.info(f'num_image_token: {self.num_image_token}')
         logger.info(f'ps_version: {self.ps_version}')
@@ -309,32 +309,36 @@ class InternVLChatModel(PreTrainedModel):
         )
         
         logits = outputs.logits
-        #vocab = self.language_model.config.id2word
         loss = None
-        #print(labels,logits)
+
         shift_logits = logits[..., :-1, :].contiguous()
         shift_labels = labels[..., 1:].contiguous()
         assert shift_logits.shape[:-1] == shift_labels.shape, "Logits and labels shapes do not match"
-        #loss_fct = CrossEntropyLoss(reduction='none')
+
         batch_size = labels.size(0)
-        #print(shift_logits.shape,shift_labels.shape)
+
         
         
         total_loss = 0
         for i in range(batch_size):
             sample_shift_logits = shift_logits[i]
             sample_shift_labels = shift_labels[i]
-            #print(sample_shift_logits.shape,sample_shift_labels.shape)
-            predicted_ids = torch.argmax(sample_shift_logits, dim=1)
-            predicted_words_with_index = self.clean_tokens_with_index(self.tokenizer.convert_ids_to_tokens(predicted_ids.tolist()))
 
+            gt_label_ids = sample_shift_labels[sample_shift_labels != -100]
+            gt_tokens = self.tokenizer.convert_ids_to_tokens(gt_label_ids.tolist())
+            gt_sentence = convert_to_sentence([(t, idx) for idx, t in enumerate(gt_tokens)])
+            
             if question_type[i] == 'close':
-                # 计算关键词匹配损失
-                sample_loss = compute_keyword_matching_loss(sample_shift_logits, sample_shift_labels, predicted_words_with_index, self.close_match_dict, self.tokenizer)
+                sample_loss = compute_keyword_matching_loss(
+                    sample_shift_logits, sample_shift_labels,
+                    predicted_words_with_index, self.close_match_dict, self.tokenizer
+                )
             else:
-                # 直接计算交叉熵损失
-                if len(predicted_words_with_index) < 5:
-                    sample_loss = compute_keyword_matching_loss(sample_shift_logits, sample_shift_labels, predicted_words_with_index, self.open_match_dict, self.tokenizer)
+                if len(gt_tokens) < 5:
+                    sample_loss = compute_keyword_matching_loss(
+                        sample_shift_logits, sample_shift_labels,
+                        predicted_words_with_index, self.open_match_dict, self.tokenizer
+                    )
                 else:
                     sample_loss = compute_ce_loss(sample_shift_logits, sample_shift_labels)
                     sample_loss = sample_loss.sum()
